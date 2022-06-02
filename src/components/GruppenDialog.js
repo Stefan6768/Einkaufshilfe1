@@ -1,5 +1,6 @@
 import React from 'react'
 import Modell from '../model/Shopping'
+import GruppeBearbeitenTag from "./GruppeBearbeitenTag";
 
 class GruppenDialog extends React.Component {
   constructor(props) {
@@ -10,23 +11,29 @@ class GruppenDialog extends React.Component {
   }
 
   gruppeHinzufuegen() {
-    // ToDo: implementieren
+    let eingabe = document.getElementById("eingabe")
+    let gruppenName = eingabe.value.trim()
+    if (gruppenName.length > 0) {
+      Modell.gruppeHinzufuegen(gruppenName)
+      this.setState({gruppenListe: Modell.gruppenListe})
+    }
+    eingabe.value = ""
+    eingabe.focus()
   }
 
   gruppeEntfernen(name) {
-    // ToDo: implementieren
+    Modell.gruppeEntfernen(name)
+    this.setState({gruppenListe: Modell.gruppenListe})
   }
 
   render() {
     const gruppenListe = []
     for (let gruppe of this.state.gruppenListe) {
       gruppenListe.push(
-        <dt className="inaktiv" key={gruppe.id}>
-          <span>{gruppe.name}</span>
-          <i className="material-icons">drive_file_rename_outline</i>
-          <i className="material-icons"
-             onClick={() => this.gruppeEntfernen(gruppe.name)}>delete</i>
-        </dt>
+        <GruppeBearbeitenTag
+          key={gruppe.id}
+          gruppe={gruppe}
+          entfernenHandler={() => this.gruppeEntfernen(gruppe.name)}/>
       )
     }
 
@@ -44,8 +51,8 @@ class GruppenDialog extends React.Component {
               <label
                 className="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon mdc-text-field--no-label">
                 <span className="mdc-text-field__ripple"></span>
-                <input className="mdc-text-field__input" type="search"
-                       id="eingabe" placeholder="Gruppe hinzufügen"
+                <input className="mdc-text-field__input" type="search" id="eingabe"
+                       placeholder="Gruppe hinzufügen" autoComplete={false}
                        onKeyPress={e => (e.key == 'Enter') ? this.gruppeHinzufuegen() : ''}/>
                 <span className="mdc-line-ripple"></span>
                 <i className="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"

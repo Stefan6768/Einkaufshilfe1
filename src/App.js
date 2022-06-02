@@ -24,18 +24,18 @@ class App extends React.Component {
   }
 
   initialisieren() {
-    let fantasy = Modell.gruppeHinzufuegen("Gemüse")
-    let film1 = fantasy.artikelHinzufuegen("Brokkoli")
+    let fantasy = Modell.gruppeHinzufuegen("Bauch")
+    let film1 = fantasy.artikelHinzufuegen("Situp's")
     film1.gekauft = true
-    fantasy.artikelHinzufuegen("Blumenkohl")
-    let scifi = Modell.gruppeHinzufuegen("Getränke")
-    let film2 = scifi.artikelHinzufuegen("Hövels")
+    fantasy.artikelHinzufuegen("Joggen")
+    let scifi = Modell.gruppeHinzufuegen("Oberschenkel")
+    let film2 = scifi.artikelHinzufuegen("Kniebeugen 15 x")
     film2.gekauft = true
-    scifi.artikelHinzufuegen("Veltins")
-    let dokus = Modell.gruppeHinzufuegen("Vegan")
-    let film3 = dokus.artikelHinzufuegen("Linsen")
+    scifi.artikelHinzufuegen("Kniebeugen mit Gewicht")
+    let dokus = Modell.gruppeHinzufuegen("Po")
+    let film3 = dokus.artikelHinzufuegen("Squats")
     film3.gekauft = true
-    dokus.artikelHinzufuegen("Kichererbsen")
+    dokus.artikelHinzufuegen("Lunges")
   }
 
   einkaufenAufZuKlappen() {
@@ -120,7 +120,7 @@ class App extends React.Component {
     return (
       <div id="container">
         <header>
-          <h1>Einkaufsliste</h1>
+          <h1>Trainingshilfe</h1>
           <label
             className="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon mdc-text-field--no-label">
             <span className="mdc-text-field__ripple"></span>
@@ -138,7 +138,7 @@ class App extends React.Component {
 
         <main>
           <section>
-            <h2>Noch zu kaufen
+            <h2>Training
               <i onClick={() => this.einkaufenAufZuKlappen()} className="material-icons">
                 {this.state.einkaufenAufgeklappt ? 'expand_more' : 'expand_less'}
               </i>
@@ -149,7 +149,7 @@ class App extends React.Component {
           </section>
           <hr/>
           <section>
-            <h2>Schon gekauft
+            <h2>Training erledigt
               <i onClick={() => this.erledigtAufZuKlappen()} className="material-icons">
                 {this.state.erledigtAufgeklappt ? 'expand_more' : 'expand_less'}
               </i>
@@ -167,7 +167,8 @@ class App extends React.Component {
             <span className="material-icons">bookmark_add</span>
             <span className="mdc-button__ripple"></span> Gruppen
           </button>
-          <button className="mdc-button mdc-button--raised">
+          <button className="mdc-button mdc-button--raised"
+                  onClick={() => this.setState({showSortierDialog: true})}>>
             <span className="material-icons">sort</span>
             <span className="mdc-button__ripple"></span> Sort
           </button>
@@ -176,6 +177,7 @@ class App extends React.Component {
             <span className="mdc-button__ripple"></span> Setup
           </button>
         </footer>
+
         {sortierDialog}
         {gruppenDialog}
       </div>
