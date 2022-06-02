@@ -2,8 +2,10 @@
   width: 23rem;
   background-image: url("../img/A4EA8777-7B09-4107-8A82-B37C3F5FDA15.png");
   background-repeat: no-repeat;
-  background-position:  top center;
-  background-attachment: fixed;
+  background-position:  center;
+  background-attachment: inherit;
+  background-size: 23rem;
+
 }
 #container {
   opacity: 85%;
@@ -13,12 +15,14 @@
   --mdc-theme-secondary: #827717;
 }
 dt {
+  opacity: 85%;
   background-color: #7CB342;
   color: var(--mdc-theme-on-primary);
 }
 h2, dd {
   background-color: var(--mdc-theme-on-primary);
 }
+
 
 .aktiv { background-color: #4b81d6 }
 .inaktiv { background-color: #7CB342 }
