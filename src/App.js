@@ -2,12 +2,11 @@ import React from 'react'
 import GruppenTag from './components/GruppenTag'
 import GruppenDialog from './components/GruppenDialog'
 import Modell from './model/Shopping'
-
+import SortierDialog from "./components/SortierDialog"
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.initialisieren()
     this.state = {
       aktiveGruppe: null,
       showGruppenDialog: false,
@@ -15,6 +14,13 @@ class App extends React.Component {
       einkaufenAufgeklappt: true,
       erledigtAufgeklappt: false
     }
+  }
+
+  componentDidMount() {
+    if (!Modell.laden()) {
+      this.initialisieren()
+    }
+    this.setState(this.state)
   }
 
   initialisieren() {
@@ -60,6 +66,13 @@ class App extends React.Component {
     eingabe.focus()
   }
 
+  closeSortierDialog = (reihenfolge, sortieren) => {
+    if (sortieren) {
+      Modell.sortieren(reihenfolge)
+    }
+    this.setState({showSortierDialog: false})
+  }
+
   setAktiveGruppe(gruppe) {
     Modell.aktiveGruppe = gruppe
     Modell.informieren("[App] Gruppe \"" + gruppe.name + "\" ist nun aktiv")
@@ -97,6 +110,11 @@ class App extends React.Component {
       gruppenDialog = <GruppenDialog
         gruppenListe={Modell.gruppenListe}
         onDialogClose={() => this.setState({showGruppenDialog: false})}/>
+    }
+
+    let sortierDialog = ""
+    if (this.state.showSortierDialog) {
+      sortierDialog = <SortierDialog onDialogClose={this.closeSortierDialog}/>
     }
 
     return (
@@ -158,7 +176,7 @@ class App extends React.Component {
             <span className="mdc-button__ripple"></span> Setup
           </button>
         </footer>
-
+        {sortierDialog}
         {gruppenDialog}
       </div>
     )
