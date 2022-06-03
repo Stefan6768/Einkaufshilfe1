@@ -120,7 +120,7 @@ class App extends React.Component {
     return (
       <div id="container">
         <header>
-          <h1>Trainingshilfe</h1>
+          <h1>Training</h1>
           <label
             className="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon mdc-text-field--no-label">
             <span className="mdc-text-field__ripple"></span>
