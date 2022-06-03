@@ -125,7 +125,7 @@ class App extends React.Component {
             className="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon mdc-text-field--no-label">
             <span className="mdc-text-field__ripple"></span>
             <input className="mdc-text-field__input" type="search"
-                   id="artikelEingabe" placeholder="Artikel hinzufügen"
+                   id="artikelEingabe" placeholder="Training hinzufügen"
                    onKeyPress={e => (e.key == 'Enter') ? this.artikelHinzufuegen() : ''}/>
             <span className="mdc-line-ripple"></span>
             <i className="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"
@@ -165,12 +165,12 @@ class App extends React.Component {
           <button className="mdc-button mdc-button--raised"
                   onClick={() => this.setState({showGruppenDialog: true})}>
             <span className="material-icons">bookmark_add</span>
-            <span className="mdc-button__ripple"></span> Gruppen
+            <span className="mdc-button__ripple"></span> Training
           </button>
           <button className="mdc-button mdc-button--raised"
                   onClick={() => this.setState({showSortierDialog: true})}>>
             <span className="material-icons">sort</span>
-            <span className="mdc-button__ripple"></span> Sort
+            <span className="mdc-button__ripple"></span> Zeit
           </button>
           <button className="mdc-button mdc-button--raised">
             <span className="material-icons">settings</span>

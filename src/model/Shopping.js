@@ -12,9 +12,9 @@ class Shopping {
   aktiveGruppe = null
   meldungenAusgeben = true
   SORTIERUNGEN = {
-    "Eigene Reihenfolge": this.sortiereIndex,
-    "Aufsteigend": this.sortiereAufsteigend,
-    "Absteigend": this.sortiereAbsteigend
+    "5 min": this.sortiereIndex,
+    "10 min": this.sortiereAufsteigend,
+    "15 min": this.sortiereAbsteigend
   }
   sortierung = Object.keys(this.SORTIERUNGEN)[0]
   STORAGE_KEY = "einkaufslisteDaten"

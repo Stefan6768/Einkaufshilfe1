@@ -45,14 +45,14 @@ class GruppenDialog extends React.Component {
                aria-modal="true"
                aria-labelledby="my-dialog-title"
                aria-describedby="my-dialog-content">
-            <h2 className="mdc-dialog__title" id="my-dialog-title">Gruppen bearbeiten</h2>
+            <h2 className="mdc-dialog__title" id="my-dialog-title">Training bearbeiten</h2>
 
             <div className="mdc-dialog__content" id="my-dialog-content">
               <label
                 className="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon mdc-text-field--no-label">
                 <span className="mdc-text-field__ripple"></span>
                 <input className="mdc-text-field__input" type="search" id="eingabe"
-                       placeholder="Gruppe hinzufügen" autoComplete={false}
+                       placeholder="Training hinzufügen" autoComplete={false}
                        onKeyPress={e => (e.key == 'Enter') ? this.gruppeHinzufuegen() : ''}/>
                 <span className="mdc-line-ripple"></span>
                 <i className="material-icons mdc-text-field__icon mdc-text-field__icon--trailing"
