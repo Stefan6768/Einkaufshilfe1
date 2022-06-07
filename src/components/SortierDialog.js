@@ -2,7 +2,7 @@ import React from 'react'
 import Modell from '../model/Shopping'
 
 /**
- * rerendert die Sortierung
+ * verändert die Sortierung Alphabetisch Auf und Absteigend oder wieder zurück in den ersten eingegeben Zustand
  * @param {event}  von Anwender ausgelöstes Event
  */
 
@@ -14,13 +14,10 @@ class SortierDialog extends React.Component {
     }
   }
 
-
-
   handleChange(event) {
     this.setState({sortierung: event.target.value})
   }
-
-
+  
   render() {
     const sortKeys = Object.keys(Modell.SORTIERUNGEN)
     return (
