@@ -4,6 +4,22 @@ import GruppenDialog from './components/GruppenDialog'
 import Modell from './model/Shopping'
 import SortierDialog from "./components/SortierDialog"
 
+/**
+ * @version 1.0
+ * @author Stefan Schreiber <stefan8@me.com>
+ * @description Diese App ist eine Trainingsunterstützungs App mit React.js und separatem Model, welche Offline verwendet werden kann
+ * @license Gnu Public Lesser License 3.0
+ *
+ */
+
+/**
+ * Diese Klasse steuert React.Component
+ *
+ * @property {constructor} 
+ * @property {Gruppe}
+ * @property {boolean}
+ */
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -17,35 +33,52 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (!Modell.laden()) {
-      this.initialisieren()
-    }
-    this.setState(this.state)
+    Modell.laden()
+    // Auf-/Zu-Klapp-Zustand aus dem LocalStorage laden
+    let einkaufenAufgeklappt = localStorage.getItem("einkaufenAufgeklappt")
+    einkaufenAufgeklappt = (einkaufenAufgeklappt == null) ? true : JSON.parse(einkaufenAufgeklappt)
+
+    let erledigtAufgeklappt = localStorage.getItem("erledigtAufgeklappt")
+    erledigtAufgeklappt = (erledigtAufgeklappt == null) ? false : JSON.parse(erledigtAufgeklappt)
+
+    this.setState({
+      aktiveGruppe: Modell.aktiveGruppe,
+      einkaufenAufgeklappt: einkaufenAufgeklappt,
+      erledigtAufgeklappt: erledigtAufgeklappt
+    })
   }
 
-  initialisieren() {
-    let fantasy = Modell.gruppeHinzufuegen("Bauch")
-    let film1 = fantasy.artikelHinzufuegen("Situp's")
-    film1.gekauft = true
-    fantasy.artikelHinzufuegen("Joggen")
-    let scifi = Modell.gruppeHinzufuegen("Oberschenkel")
-    let film2 = scifi.artikelHinzufuegen("Kniebeugen 15 x")
-    film2.gekauft = true
-    scifi.artikelHinzufuegen("Kniebeugen mit Gewicht")
-    let dokus = Modell.gruppeHinzufuegen("Po")
-    let film3 = dokus.artikelHinzufuegen("Squats")
-    film3.gekauft = true
-    dokus.artikelHinzufuegen("Lunges")
-  }
+
+  
+
+  /**
+   * @param {String} such
+   * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+   * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+   */
 
   einkaufenAufZuKlappen() {
     let neuerZustand = !this.state.einkaufenAufgeklappt
     this.setState({einkaufenAufgeklappt: neuerZustand})
   }
 
+  /**
+   * Sucht
+   * @param {String} suchName - Name der gesuchten Gruppe
+   * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+   * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+   */
+
   erledigtAufZuKlappen() {
     this.setState({erledigtAufgeklappt: !this.state.erledigtAufgeklappt})
   }
+
+  /**
+   * Sucht
+   * @param {String} suchName - Name der gesuchten Gruppe
+   * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+   * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+   */
 
   artikelChecken = (artikel) => {
     artikel.gekauft = !artikel.gekauft
@@ -53,6 +86,13 @@ class App extends React.Component {
     Modell.informieren("[App] Artikel \"" + artikel.name + "\" wurde " + aktion)
     this.setState(this.state)
   }
+
+  /**
+   * Sucht
+   * @param {String} suchName - Name der gesuchten Gruppe
+   * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+   * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+   */
 
   artikelHinzufuegen() {
     // ToDo: implementiere diese Methode
@@ -66,12 +106,26 @@ class App extends React.Component {
     eingabe.focus()
   }
 
+  /**
+   * Sucht
+   * @param {String} suchName - Name der gesuchten Gruppe
+   * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+   * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+   */
+
   closeSortierDialog = (reihenfolge, sortieren) => {
     if (sortieren) {
       Modell.sortieren(reihenfolge)
     }
     this.setState({showSortierDialog: false})
   }
+
+  /**
+   * Sucht
+   * @param {String} suchName - Name der gesuchten Gruppe
+   * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+   * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+   */
 
   setAktiveGruppe(gruppe) {
     Modell.aktiveGruppe = gruppe
@@ -92,6 +146,13 @@ class App extends React.Component {
           checkHandler={this.artikelChecken}/>)
       }
     }
+    /**
+     * Sucht
+     * @param {String} suchName - Name der gesuchten Gruppe
+     * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+     * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+     */
+
 
     let schonGekauft = []
     if (this.state.erledigtAufgeklappt) {
@@ -105,6 +166,13 @@ class App extends React.Component {
       }
     }
 
+    /**
+     * Sucht
+     * @param {String} suchName - Name der gesuchten Gruppe
+     * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+     * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+     */
+
     let gruppenDialog = ""
     if (this.state.showGruppenDialog) {
       gruppenDialog = <GruppenDialog
@@ -112,10 +180,24 @@ class App extends React.Component {
         onDialogClose={() => this.setState({showGruppenDialog: false})}/>
     }
 
+    /**
+     * Sucht
+     * @param {String} suchName - Name der gesuchten Gruppe
+     * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+     * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+     */
+
     let sortierDialog = ""
     if (this.state.showSortierDialog) {
       sortierDialog = <SortierDialog onDialogClose={this.closeSortierDialog}/>
     }
+
+    /**
+     * Sucht eine Gruppe nach ihrem Namen und liefert sie als Objekt zurück
+     * @param {String} suchName - Name der gesuchten Gruppe
+     * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+     * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+     */
 
     return (
       <div id="container">
@@ -160,6 +242,13 @@ class App extends React.Component {
           </section>
         </main>
         <hr/>
+
+        {/**
+        * Sucht
+        * @param {String} suchName - Name der gesuchten Gruppe
+        * @param {Boolean} meldungAusgeben - steuert, ob eine Meldung ausgegeben wird
+        * @returns {Gruppe | null} gefundeneGruppe - die gefundene Gruppe; `null`, wenn nichts gefunden wurde
+        */}
 
         <footer>
           <button className="mdc-button mdc-button--raised"

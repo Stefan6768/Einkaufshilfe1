@@ -1,6 +1,11 @@
 import React from 'react'
 import Modell from '../model/Shopping'
 
+/**
+ * rerendert die Sortierung
+ * @param {event}  von Anwender ausgelöstes Event
+ */
+
 class SortierDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -9,9 +14,12 @@ class SortierDialog extends React.Component {
     }
   }
 
+
+
   handleChange(event) {
     this.setState({sortierung: event.target.value})
   }
+
 
   render() {
     const sortKeys = Object.keys(Modell.SORTIERUNGEN)
