@@ -2,8 +2,9 @@ import React from 'react'
 import Modell from '../model/Shopping'
 
 /**
+ * Klasse zum sortieren der Eingabe des Anwenders
  * verändert die Sortierung Alphabetisch Auf und Absteigend oder wieder zurück in den ersten eingegeben Zustand
- * @param {event}  von Anwender ausgelöstes Event
+ * @property {event}  von Anwender ausgelöstes Event
  */
 
 class SortierDialog extends React.Component {

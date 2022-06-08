@@ -2,6 +2,11 @@ import React from 'react'
 import Modell from '../model/Shopping'
 import GruppeBearbeitenTag from "./GruppeBearbeitenTag";
 
+/**
+ * Klasse für die Eingabe und das entfernen von Gruppen über den Anwender
+ * @property {constructor} gruppenListe
+ */
+
 class GruppenDialog extends React.Component {
     constructor(props) {
         super(props)
@@ -10,7 +15,9 @@ class GruppenDialog extends React.Component {
         }
     }
 
-    /** fügt eine Gruppe hinzu */
+    /** fügt eine Gruppe hinzu
+     * @param name - fügt Gruppen Name hinzu
+     * */
     gruppeHinzufuegen() {
         let eingabe = document.getElementById("eingabe")
         let gruppenName = eingabe.value.trim()
@@ -23,7 +30,7 @@ class GruppenDialog extends React.Component {
     }
 
     /**
-     * Entfernt ausgewählte Gruppe
+     * Entfernt die ausgewählte Gruppe
      * @param name - entfernt Gruppen Name
      */
     gruppeEntfernen(name) {

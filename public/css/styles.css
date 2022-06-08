@@ -24,9 +24,9 @@ h2, dd {
 }
 
 
-.aktiv { background-color: #4b4dd6
+.aktiv { background-color: rgba(60, 60, 185, 0.83)
 }
-.inaktiv { background-color: #4248b3
+.inaktiv { background-color: rgba(12, 12, 42, 0.99)
 }
 h1, h2, dl {
   margin: 0;
@@ -56,6 +56,7 @@ dt {
   padding: 3px 5px;
   text-align: center;
   border-radius: 1rem;
+  color:white ;
 }
 dt span {
   width: 100%;

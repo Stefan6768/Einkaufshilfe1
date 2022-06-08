@@ -1,13 +1,16 @@
 import React from 'react'
 
+/**
+ * Klasse zur Eingabe und zum ändern von Artikeln
+ * @ property {boolean} schaltet den Edit-Mode um
+ * @ property {this.state}  newName enthält den neuen Namen im Edit-Mode
+ */
 
 class ArtikelTag extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // schaltet den Edit-Mode um
             isEditing: false,
-            // enthält den neuen Namen im Edit-Mode
             newName: this.props.artikel.name
         }
     }
@@ -27,7 +30,6 @@ class ArtikelTag extends React.Component {
      */
     artikelUmbenennen(artikel, event) {
         if (event && event.key != "Enter") return
-        // ToDo: Modell.aktuelleGruppe.artikelUmbenennen() verwenden
         artikel.name = this.state.newName
         this.setState({isEditing: false})
     }
@@ -39,7 +41,9 @@ class ArtikelTag extends React.Component {
             artikelName = <s>{artikel.name}</s>
         }
 
-        // erlaubt das abhaken und reaktivieren
+        /** erlaubt das abhaken und reaktivieren
+         * Reaktion auf die Eingaben der Anwender
+         */
         const viewTemplate = (
             <dd>
                 <label>
@@ -56,7 +60,7 @@ class ArtikelTag extends React.Component {
                    onClick={this.props.deleteHandler}>delete</i></dd>
         )
 
-        // erlaubt das Ändern des Namens
+        /**erlaubt das Ändern des Namens */
         let editTemplate = (
             <dd>
                 <input type="search" value={this.state.newName} autoFocus={true}
