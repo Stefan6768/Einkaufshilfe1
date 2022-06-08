@@ -28,21 +28,21 @@ class SortierDialog extends React.Component {
 
                         <div className="mdc-dialog__content">
                             <ul className="mdc-deprecated-list" onChange={e => this.handleChange(e)}>
-                                <li><label htmlFor="eigene">
-                                    <input type="radio" id="eigene" name="Sortierung" value={sortKeys[0]}
+                                <li><label htmlFor="5 min">
+                                    <input type="radio" id="5 min" name="Sortierung" value={sortKeys[0]}
                                            defaultChecked={this.state.sortierung == sortKeys[0]}/>
                                     {sortKeys[0]}
                                 </label>
                                 </li>
                                 <hr/>
-                                <li><label htmlFor="auf">
-                                    <input type="radio" id="auf" name="Sortierung" value={sortKeys[1]}
+                                <li><label htmlFor="10 min">
+                                    <input type="radio" id="10 min" name="Sortierung" value={sortKeys[1]}
                                            defaultChecked={this.state.sortierung == sortKeys[1]}/>
                                     {sortKeys[1]}
                                 </label>
                                 </li>
-                                <li><label htmlFor="ab">
-                                    <input type="radio" id="ab" name="Sortierung" value={sortKeys[2]}
+                                <li><label htmlFor="15 min">
+                                    <input type="radio" id="15 min" name="Sortierung" value={sortKeys[2]}
                                            defaultChecked={this.state.sortierung == sortKeys[2]}/>
                                     {sortKeys[2]}
                                 </label>
