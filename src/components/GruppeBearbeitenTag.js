@@ -2,7 +2,7 @@ import React from 'react'
 import Modell from '../model/Shopping'
 
 /**
- *
+ * Klasse
  */
 
 class GruppeBearbeitenTag extends React.Component {

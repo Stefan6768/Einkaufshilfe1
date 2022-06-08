@@ -167,12 +167,12 @@ class Shopping {
      * Speichert den Modell-Zustand im LocalStorage
      * @param {Object} daten - entspricht dem Auf-Zuklapp-Zustand der App
      */
-    speichern(daten) {
+
+    speichern(daten:Object) {
         const json = {
             gruppenListe: this.gruppenListe,
-            aktiveGruppeName: this.aktiveGruppe.name,
+            aktiveGruppeName: this.aktiveGruppe?.name,
         }
-        // Object.assign(json, daten)
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(json))
     }
 
