@@ -11,12 +11,12 @@
   opacity: 85%;
 }
 :root {
-  --mdc-theme-primary: #33691E;
-  --mdc-theme-secondary: #827717;
+  --mdc-theme-primary: rgba(30, 56, 105, 0.56);
+  --mdc-theme-secondary: #0a0c1c;
 }
 dt {
   opacity: 85%;
-  background-color: #7CB342;
+  background-color: rgba(66, 123, 179, 0.78);
   color: var(--mdc-theme-on-primary);
 }
 h2, dd {
@@ -24,13 +24,19 @@ h2, dd {
 }
 
 
-.aktiv { background-color: #4b81d6 }
-.inaktiv { background-color: #7CB342 }
+.aktiv { background-color: #4b4dd6
+}
+.inaktiv { background-color: #4248b3
+}
 h1, h2, dl {
   margin: 0;
 }
+h1 {
+  text-align: center;
+}
 h2 {
   padding: 0 0 10px 0;
+  text-align: center;
 }
 i.material-icons {
   cursor: pointer;
@@ -48,6 +54,8 @@ dt {
   display: flex;
   font-weight: 500;
   padding: 3px 5px;
+  text-align: center;
+  border-radius: 1rem;
 }
 dt span {
   width: 100%;
